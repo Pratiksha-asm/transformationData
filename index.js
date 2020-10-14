@@ -16,18 +16,17 @@ function transformData(data){
     console.log(key)
     for (index in data[key] ){
       var data1={}
-    console.log(index,"this value or number");
-      console.log(index, data[key] [index])
-      input =  data[key] [index]
-    //   var value=input[key] [index];
-    //   var value1= Object.values(value);
-    // console.log(value1,"this is array")
-    // for(i=0;i < value1.length;i++){
-    // console.log(typeof value1[i],"at index value");
-    // if(typeof value1[i] == "object"){
-    //   otherloop(data)
-    // }
-    
+      console.log(index, data[key] [index],"this is") // outer array object
+      var value=data[key] [index];
+     var value1= Object.values(value);
+     for(i=0;i < value1.length;i++){
+     if(typeof value1[i] == "object"){
+     for (j in value1[i]){
+     console.log( data1=j,value1[i] [j] ,"this is indxex") //inner array object
+       data1[JSON.stringify(j)] = value1[i] [j]
+     } 
+     }
+    }
   }
       saveOutput(data1);
     }
@@ -36,18 +35,6 @@ function transformData(data){
 
   // Call this once we are ready with output format
   // saveOutput(data)
-
-// function otherloop(data1){ 
-//   console.log(data1,"this is full data");
-//   for (key in input) {
-//     console.log(key)
-//     for (index in input[key] ){
-//     console.log(index,"this value or number");
-//       console.log(index, input[key] [index])
-//       output[JSON.stringify(index)] =  input[key] [index]
-//     }
-//   }
-// }
 
 function saveOutput(data) {
   fs.writeFile("output.json", JSON.stringify(data), function(res){
