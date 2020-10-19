@@ -1,0 +1,24 @@
+ 
+ 
+ const data = require('./input.json');
+const fs = require("fs");
+// transformData(data)
+const finalresult = custom(data);
+console.log("**********************************");
+console.log("final result",JSON.stringify(finalresult));
+
+// Transformation function which will convert input to output format.
+function transformData(dataArray) {
+
+  var returnObject = {};
+  if(dataArray instanceof Array){
+  for (i = 0; i <= dataArray.length; i++) {
+    returnObject[i + ""] = dataArray[i];
+  }
+}else {
+  console.log("input dataArray is not array");
+}
+  
+  console.log(returnObject, "this is return ");
+  return returnObject
+}
